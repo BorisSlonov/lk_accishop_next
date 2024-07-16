@@ -1,0 +1,128 @@
+.ranks {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 16px;
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 60px;
+}
+
+
+.track {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+    background: linear-gradient(137deg, #00efd1 0%, #00a8a8 100%);
+}
+
+.item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.num {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 42px;
+    text-transform: capitalize;
+    color: #292844;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.num_1 {
+    background: linear-gradient(137deg, #00efd1 0%, #00a8a8 100%);
+}
+
+.num_2 {
+    background: linear-gradient(104deg, #ff7979 0%, #ffdb7d 100%);
+}
+
+.num_3 {
+    background: linear-gradient(137deg, #a6ff61 0%, #51ffd5 100%);
+}
+
+.num_4 {
+    background: linear-gradient(142deg, #fcff5a 0%, #ff9c41 100%);
+}
+
+.num_5 {
+    background: linear-gradient(135deg, #fb37ff 0%, #00efd1 100%);
+}
+
+.sum_1,
+.name_1 {
+    font-size: 18px;
+    text-transform: capitalize;
+    background: linear-gradient(137deg, #00efd1 0%, #00a8a8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+
+.sum_2,
+.name_2 {
+    text-transform: capitalize;
+    background: linear-gradient(104deg, #ff7979 0%, #ffdb7d 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sum_3,
+.name_3 {
+    text-transform: capitalize;
+    background: linear-gradient(137deg, #a6ff61 0%, #51ffd5 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sum_4,
+.name_4 {
+    text-transform: capitalize;
+    background: linear-gradient(142deg, #fcff5a 0%, #ff9c41 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sum_5,
+.name_5 {
+    text-transform: capitalize;
+    background: linear-gradient(135deg, #fb37ff 0%, #00efd1 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media(max-width:767px) {
+    .wrapper {
+        overflow-x: scroll;
+        padding-bottom: 24px;
+    }
+
+    .ranks {
+        width: 700px;
+    }
+}

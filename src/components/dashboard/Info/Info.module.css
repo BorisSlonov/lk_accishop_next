@@ -1,0 +1,33 @@
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: var(--BG-2, linear-gradient(358deg, #151430 1.41%, #383753 97.58%));
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.sign {
+    color: #00A8A8;
+    font-size: 14px;
+}
+
+.count {
+    flex-shrink: 0;
+    display: flex;
+    font-size: 14px;
+    min-width: 80px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    color: #00EFD1;
+    border: 1px solid #00A8A8;
+    border-radius: 10px;
+}

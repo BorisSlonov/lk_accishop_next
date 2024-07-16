@@ -1,0 +1,29 @@
+.ref {
+    height: 100%;
+    background: var(--BG-2, linear-gradient(358deg, #151430 1.41%, #383753 97.58%));
+    padding: 18px 24px;
+    border-radius: 10px;
+    max-width: 250px;
+}
+
+.p {
+    color: #868686;
+    font-size: 12px;
+}
+
+.a {
+    font-size: 14px;
+    color: #00EFD1;
+}
+
+.p_link {
+    color: #868686;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+@media(max-width:767px) {
+    .ref {
+        max-width: 100%;
+    }
+}

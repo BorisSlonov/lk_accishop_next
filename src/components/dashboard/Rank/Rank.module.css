@@ -1,0 +1,68 @@
+.wrapper {
+    background: var(--BG-2, linear-gradient(358deg, #151430 1.41%, #383753 97.58%));
+    padding: 18px 24px;
+    border-radius: 10px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 18px;
+    background: linear-gradient(137deg, #00efd1 0%, #00a8a8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.totalAmountHead {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+}
+
+.title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 24px;
+    background: var(--Titles, linear-gradient(94deg, #FB37FF 0%, #00EFD1 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.totalAmountSum {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 48px;
+    background: var(--Titles, linear-gradient(94deg, #FB37FF 0%, #00EFD1 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+@media(max-width:767px) {
+    .header {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .title {
+        font-size: 16px;
+    }
+    .totalAmountSum {
+        text-align: center;
+        margin-top: 16px;
+    }
+}
