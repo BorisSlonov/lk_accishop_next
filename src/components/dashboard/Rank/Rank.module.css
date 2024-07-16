@@ -51,3 +51,18 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
+@media(max-width:767px) {
+    .header {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .title {
+        font-size: 16px;
+    }
+    .totalAmountSum {
+        text-align: center;
+        margin-top: 16px;
+    }
+}

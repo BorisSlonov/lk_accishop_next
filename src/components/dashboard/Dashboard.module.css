@@ -35,3 +35,37 @@
 .dashboardRank {
     grid-area: rank;
 }
+
+@media(max-width:767px) {
+    .dashboardGrid {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 50px;
+    }
+
+
+    .dashboardHead {
+        order: 1;
+    }
+
+    .dashboardHistory {
+        order: 2;
+    }
+
+    .dashboardRef {
+        order: 3;
+    }
+
+    .dashboardInfo {
+        order: 4;
+    }
+
+
+    .dashboardRank {
+        order: 5;
+    }
+
+    .dashboardAvatar {
+        order: 6;
+    }
+}

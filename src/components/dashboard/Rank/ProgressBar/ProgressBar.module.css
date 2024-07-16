@@ -115,3 +115,14 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+@media(max-width:767px) {
+    .wrapper {
+        overflow-x: scroll;
+        padding-bottom: 24px;
+    }
+
+    .ranks {
+        width: 700px;
+    }
+}

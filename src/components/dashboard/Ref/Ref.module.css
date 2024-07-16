@@ -21,3 +21,9 @@
     font-size: 12px;
     margin-top: 12px;
 }
+
+@media(max-width:767px) {
+    .ref {
+        max-width: 100%;
+    }
+}
