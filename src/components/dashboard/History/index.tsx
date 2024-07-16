@@ -14,7 +14,7 @@ export default async function History() {
     <div className={styles.history}>
       <div className={styles.head}>
         <Image
-          src={`${process.env.STRAPI_BACKEND_URL}/uploads/Shopping_Cart_3feb1fced6.svg`}
+          src={`${process.env.STRAPI_BACKEND_URL}uploads/Shopping_Cart_b0ca106168.svg`}
           alt={"Корзина"}
           width={24}
           height={24}

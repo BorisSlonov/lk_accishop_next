@@ -26,7 +26,7 @@ export const authOptions: NextAuthOptions = {
         }
         try {
           const strapiResponse = await fetch(
-            `${process.env.STRAPI_BACKEND_URL}/api/auth/local`,
+            `${process.env.STRAPI_BACKEND_URL}api/auth/local`,
             {
               method: 'POST',
               headers: {
@@ -105,7 +105,7 @@ export const authOptions: NextAuthOptions = {
           // we now know we are doing a sign in using GoogleProvider
           try {
             const strapiResponse = await fetch(
-              `${process.env.STRAPI_BACKEND_URL}/api/auth/${account.provider}/callback?access_token=${account.access_token}`,
+              `${process.env.STRAPI_BACKEND_URL}api/auth/${account.provider}/callback?access_token=${account.access_token}`,
               { cache: 'no-cache' }
             );
             if (!strapiResponse.ok) {

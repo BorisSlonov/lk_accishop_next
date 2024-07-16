@@ -18,7 +18,7 @@ export default async function Rank() {
                 <div className={styles.totalAmount}>
                     <div className={styles.totalAmountHead}>
                         <Image
-                            src={`${process.env.STRAPI_BACKEND_URL}/uploads/money_48a47e9a5f.svg`}
+                            src={`${process.env.STRAPI_BACKEND_URL}uploads/money_e20d29baba.svg`}
                             alt={"Купюра"}
                             width={49}
                             height={26}

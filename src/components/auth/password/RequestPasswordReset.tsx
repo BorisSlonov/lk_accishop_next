@@ -5,6 +5,7 @@ import { useFormState } from 'react-dom';
 import PendingSubmitButton from '../PendingSubmitButton';
 import requestPasswordResetAction from './requestPasswordResetAction';
 import Link from 'next/link';
+import styles from './ChangePassword.module.css'
 
 type InputErrorsT = {
   email?: string[];
@@ -46,8 +47,8 @@ export default function ForgotPassword() {
   }
 
   return (
-    <div className='mx-auto my-8 p-8 max-w-lg bg-zinc-100 rounded-sm'>
-      <h2 className='text-center text-2xl text-blue-400 mb-8 font-bold'>
+    <div className={styles.wrapper}>
+      <h2 className={styles.h2}>
         Сброс пароля
       </h2>
       <p className='mb-4'>

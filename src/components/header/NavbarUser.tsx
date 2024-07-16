@@ -19,7 +19,7 @@ export default async function NavbarUser() {
       <Link href='/account' className='text-sky-700 underline'>
         <Image
           className={styles.icon}
-          src={`${process.env.STRAPI_BACKEND_URL}/uploads/settings_svgrepo_com_f96c21b20b.svg`}
+          src={`${process.env.STRAPI_BACKEND_URL}uploads/settings_svgrepo_com_08c803c3e3.svg`}
           width={24}
           height={24}
           alt={'Настройки'}
