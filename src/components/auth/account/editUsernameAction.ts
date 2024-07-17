@@ -24,7 +24,7 @@ export default async function editUsernameAction(
   const session = await getServerSession(authOptions);
   try {
     const strapiResponse = await fetch(
-      process.env.STRAPI_BACKEND_URL + '/api/user/me',
+      process.env.STRAPI_BACKEND_URL + 'api/user/me',
       {
         method: 'PUT',
         headers: {

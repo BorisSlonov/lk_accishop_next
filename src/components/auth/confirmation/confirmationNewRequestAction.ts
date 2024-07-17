@@ -26,7 +26,7 @@ export default async function confirmNewRequestAction(
 
   try {
     const strapiResponse: any = await fetch(
-      process.env.STRAPI_BACKEND_URL + '/api/auth/send-email-confirmation',
+      process.env.STRAPI_BACKEND_URL + 'api/auth/send-email-confirmation',
       {
         method: 'POST',
         headers: {

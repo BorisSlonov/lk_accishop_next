@@ -44,7 +44,7 @@ export default async function resetPasswordAction(
   // call Strapi
   try {
     const strapiResponse = await fetch(
-      process.env.STRAPI_BACKEND_URL + '/api/auth/change-password',
+      process.env.STRAPI_BACKEND_URL + 'api/auth/change-password',
       {
         method: 'POST',
         headers: {

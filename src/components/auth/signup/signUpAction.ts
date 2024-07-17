@@ -36,7 +36,7 @@ export default async function signUpAction(
 
   try {
     const strapiResponse = await fetch(
-      process.env.STRAPI_BACKEND_URL + '/api/auth/local/register',
+      process.env.STRAPI_BACKEND_URL + 'api/auth/local/register',
       {
         method: 'POST',
         headers: {

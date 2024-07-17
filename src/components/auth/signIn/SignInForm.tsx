@@ -109,7 +109,7 @@ export default function SignInForm() {
         <label htmlFor='password' className='block mb-1'>
           Пароль *
         </label>
-        <input
+        <input 
           type='password'
           id='password'
           name='password'
