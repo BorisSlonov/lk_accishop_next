@@ -9,15 +9,45 @@ body {
   min-height: 100vh;
 }
 
+/* Input field styling */
 input {
   background-color: #ffffff6c;
+  /* Semi-transparent white */
   color: #18163A;
-  border-bottom: 2px solid #18163A;
+  /* Text color */
+  border-bottom: 2px solid transparent;
+  /* Initial border color */
   outline: none;
+  /* Remove outline */
   padding: 8px 16px;
-  transition: all .3s;
+  /* Padding */
+  transition: all 0.3s;
+  /* Smooth transition for all properties */
 }
 
+/* Focus state styling */
 input:focus {
   border-bottom: 2px solid #ffffff6c;
+  /* Border color on focus */
+}
+
+/* Ensure consistent background color during autocomplete in WebKit browsers */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff6c inset;
+  /* Override background color */
+  box-shadow: 0 0 0px 1000px #ffffff6c inset;
+  /* Override background color */
+  transition: background-color 5000s ease-in-out 0s;
+  /* Ensure long transition to prevent color change */
+}
+
+/* Placeholder styling */
+input::placeholder {
+  color: #18163A;
+  /* Placeholder text color */
+  opacity: 0.7;
+  /* Placeholder opacity */
 }
