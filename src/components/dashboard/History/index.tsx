@@ -25,7 +25,7 @@ export default async function History() {
       </div>
 
       {<ul className={styles.list}>
-        {currentUser.orders.map((order: Order, index: number) => (
+        {currentUser.orders.length >= 1 ? currentUser.orders.map((order: Order, index: number) => (
           <li className={styles.list_item} key={index}>
             <p className={styles.product_name}>{order.product_name}</p>
             <div className={styles.links}>
@@ -34,7 +34,7 @@ export default async function History() {
               <Link className={styles.link} href={order.product_link}>Повторить</Link>
             </div>
           </li>
-        ))}
+        )) : 'Тут пока пусто..'}
       </ul>}
     </div>
   );
