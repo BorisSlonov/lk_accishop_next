@@ -7,7 +7,7 @@ export default function ConfirmationMessage() {
       <p>
         Для подтверждения регистрации перейдите по ссылке из письма
       </p>
-      <h3 className='font-bold my-4'>No email found?</h3>
+      <h3 className='font-bold my-4'>Нет письма?</h3>
       <p>
         Если вы не видите пиьсьмо, пожалуйста, проверьте спам
       </p>
