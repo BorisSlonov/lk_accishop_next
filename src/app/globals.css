@@ -9,26 +9,18 @@ body {
   min-height: 100vh;
 }
 
-/* Input field styling */
 input {
   background-color: #ffffff6c;
-  /* Semi-transparent white */
   color: #18163A;
-  /* Text color */
   border-bottom: 2px solid transparent;
-  /* Initial border color */
   outline: none;
-  /* Remove outline */
   padding: 8px 16px;
-  /* Padding */
   transition: all 0.3s;
-  /* Smooth transition for all properties */
 }
 
 /* Focus state styling */
 input:focus {
   border-bottom: 2px solid #ffffff6c;
-  /* Border color on focus */
 }
 
 /* Ensure consistent background color during autocomplete in WebKit browsers */

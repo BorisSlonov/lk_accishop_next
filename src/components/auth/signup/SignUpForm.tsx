@@ -79,7 +79,7 @@ export default function SignUpForm() {
       </div>
       <div className='mb-3'>
         <label htmlFor='password' className='block mb-1'>
-          Password *
+          Пароль *
         </label>
         <input
           type='password'
@@ -96,7 +96,7 @@ export default function SignUpForm() {
       </div>
       <div className='mb-3'>
         <label htmlFor='inviter' className='block mb-1'>
-          Пригласитель
+         Код пригласителя
         </label>
         <input
           type='text'
