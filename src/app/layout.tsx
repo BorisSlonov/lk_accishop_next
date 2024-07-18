@@ -9,7 +9,7 @@ import Provider from '@/components/Provider';
 const nunito = Nunito({ subsets: ['latin', 'cyrillic'] });
 
 export const metadata: Metadata = {
-  title: 'Frontend',
+  title: 'accishop лк',
 };
 
 export default async function RootLayout({
