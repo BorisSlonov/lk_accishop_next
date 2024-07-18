@@ -9,13 +9,6 @@ export default async function AccountPage() {
   if (!session) {
     return redirect('/signin');
   }
-  if (session.provider === 'google') {
-    return (
-      <div className='bg-zinc-100 rounded-sm px-4 py-8 mb-8'>
-        <h2 className='font-bold text-lg mb-4'>Account</h2>
-        <p>You are logged in to this website with your google account.</p>
-      </div>
-    );
-  }
+
   return <Account />;
 }

@@ -27,7 +27,7 @@
     max-height: 135px;
     overflow-y: auto;
     padding-right: 12px;
-    color: #fff;
+    color: #00a8a8;
 }
 
 .list::-webkit-scrollbar {
