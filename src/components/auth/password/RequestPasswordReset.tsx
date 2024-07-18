@@ -39,8 +39,7 @@ export default function ForgotPassword() {
       <div className='bg-zinc-100 rounded-sm px-4 py-8 mb-8'>
         <h2 className='font-bold text-lg mb-4'>Check your email</h2>
         <p>
-          We sent you an email with a link. Open this link to reset your
-          password. Carefull, expires ...
+          Для сброса пароля перейдите по ссылке из письма на вашей почте
         </p>
       </div>
     );

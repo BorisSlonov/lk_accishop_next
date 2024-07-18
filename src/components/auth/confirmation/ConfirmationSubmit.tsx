@@ -15,7 +15,7 @@ export default async function ConfirmationSubmit({ confirmationToken }: Props) {
     return (
       <Wrapper>
         <h2 className='font-bold text-lg mb-4'>Error</h2>
-        <p>Token is not valid.</p>
+        <p>Не валидный токен.</p>
       </Wrapper>
     );
   }
@@ -37,7 +37,7 @@ export default async function ConfirmationSubmit({ confirmationToken }: Props) {
       return (
         <Wrapper>
           <h2 className='font-bold text-lg mb-4'>Error</h2>
-          <p>Error: {error}</p>
+          <p>Ошибка: {error}</p>
         </Wrapper>
       );
     }
@@ -55,11 +55,10 @@ export default async function ConfirmationSubmit({ confirmationToken }: Props) {
     <Wrapper>
       <h2 className='font-bold text-lg mb-4'>Email confirmed.</h2>
       <p>
-        Your email was succesfully verified. You can now{' '}
+        Ваша регистрация подтверждена! Теперь вы можете{' '}
         <Link href='/signin' className='underline'>
           Войти
         </Link>
-        .
       </p>
     </Wrapper>
   );

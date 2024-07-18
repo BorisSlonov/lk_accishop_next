@@ -126,7 +126,7 @@ export default function ChangePassword() {
       'message' in actionState &&
       actionState.message === 'Success' ? (
         <div className='text-green-700' aria-live='polite'>
-          Your password was updated.
+          Пароль обновлен
         </div>
       ) : null}
     </form>

@@ -3,20 +3,18 @@ import Link from 'next/link';
 export default function ConfirmationMessage() {
   return (
     <div className='bg-zinc-100 rounded-sm px-4 py-8 mb-8'>
-      <h2 className='font-bold text-lg mb-4'>Please confirm your email.</h2>
+      <h2 className='font-bold text-lg mb-4'>Подтверждение почты</h2>
       <p>
-        We sent you an email with a confirmation link. Please open this email
-        and click the link to confirm your [project name] account and email.
+        Для подтверждения регистрации перейдите по ссылке из письма
       </p>
       <h3 className='font-bold my-4'>No email found?</h3>
       <p>
-        If you did not receive an email with a confirmation link please check
-        your spam folder or wait a couple of minutes.
+        Если вы не видите пиьсьмо, пожалуйста, проверьте спам
       </p>
       <p>
-        Still no email?{' '}
+        или{' '}
         <Link href='/confirmation/newrequest' className='underline'>
-          Request a new confirmation email.
+          запросить новое письмо
         </Link>
       </p>
     </div>

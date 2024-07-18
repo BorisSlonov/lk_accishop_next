@@ -35,11 +35,10 @@ export default function ConfirmationNewRequest() {
   return (
     <div className='mx-auto my-8 p-8 max-w-lg bg-zinc-100 rounded-sm'>
       <h2 className='text-center text-2xl text-blue-400 mb-8 font-bold'>
-        Confirmation request
+        Запрос подтвеждения
       </h2>
       <p className='mb-4'>
-        Request a new confirmation email. Maybe some info about token expiry or
-        limited request here.
+        Введите почту для получения нового письма
       </p>
       <form action={formAction} className='my-8'>
         <div className='mb-3'>
