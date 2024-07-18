@@ -1,4 +1,5 @@
 export type StrapiCurrentUserT = {
+  provider: ReactNode;
   balance: number;
   reflink: string;
   refcount: number;

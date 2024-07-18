@@ -1,7 +1,7 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import editUsernameAction, { EditUsernameActionT } from './editUsernameAction';
+import addInviterAction, { addInviterActionT } from './addInviterAction';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
@@ -9,7 +9,7 @@ type Props = {
   username: string;
 };
 
-export default function EditUsername({ username }: Props) {
+export default function addInviter({ username }: Props) {
   const [edit, setEdit] = useState(false);
   const [newUsername, setNewUsername] = useState(username);
   const [error, setError] = useState<null | string>(null);
@@ -24,17 +24,17 @@ export default function EditUsername({ username }: Props) {
     setLoading(true);
 
     // validate newUsername
-    if (newUsername === '' || newUsername.length < 4) {
-      setError('Username is too short.');
+    if (newUsername === '' || newUsername.length == 9) {
+      setError('Код инвайтера состио из 9 знаков');
       setLoading(false);
       return;
     }
 
     // call server action
-    const actionResponse: EditUsernameActionT = await editUsernameAction(
+    const actionResponse: addInviterActionT = await addInviterAction(
       newUsername
     );
-    // screen flicker only in dev mode because of revalidateTags in editUsernameAction
+    // screen flicker only in dev mode because of revalidateTags in addInviterAction
 
     // handle error
     if (actionResponse.error) {
@@ -49,11 +49,11 @@ export default function EditUsername({ username }: Props) {
     if (!actionResponse.error && actionResponse.message === 'Success') {
       // inform user of success
       setError(null);
-      setMessage('Юзерней обновлен');
+      setMessage('Инвайтер обновлен');
       setLoading(false);
 
       // update NextAuth token
-      await update({ username: actionResponse.data.username });
+      await update({ username: actionResponse.data.inviter });
       // refresh server components
       router.refresh();
     }
