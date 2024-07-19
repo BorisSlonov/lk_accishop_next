@@ -1,17 +1,17 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import addInviterAction, { addInviterActionT } from './addInviterAction';
+import editInviterAction, { EditInviterActionT } from './EditInviterAction';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 type Props = {
-  username: string;
+  inviter: string;
 };
 
-export default function AddInviter({ username }: Props) {
+export default function EditInviter({ inviter }: Props) {
   const [edit, setEdit] = useState(false);
-  const [newUsername, setNewUsername] = useState(username);
+  const [newInviter, setNewInviter] = useState(inviter);
   const [error, setError] = useState<null | string>(null);
   const [message, setMessage] = useState<null | string>(null);
   const [loading, setLoading] = useState(false);
@@ -23,18 +23,15 @@ export default function AddInviter({ username }: Props) {
 
     setLoading(true);
 
-    // validate newUsername
-    if (newUsername === '' || newUsername.length == 9) {
-      setError('Код инвайтера состио из 9 знаков');
+    // validate newInviter
+    if (newInviter === '' || newInviter.length < 4) {
+      setError('Inviter is too short.');
       setLoading(false);
       return;
     }
 
     // call server action
-    const actionResponse: addInviterActionT = await addInviterAction(
-      newUsername
-    );
-    // screen flicker only in dev mode because of revalidateTags in addInviterAction
+    const actionResponse: EditInviterActionT = await editInviterAction(newInviter);
 
     // handle error
     if (actionResponse.error) {
@@ -45,15 +42,15 @@ export default function AddInviter({ username }: Props) {
     }
 
     // handle success
-    // username is updated in DB and getCurrentUser fetch was updated with revalidateTag
+    // inviter is updated in DB and getCurrentUser fetch was updated with revalidateTag
     if (!actionResponse.error && actionResponse.message === 'Success') {
       // inform user of success
       setError(null);
-      setMessage('Инвайтер обновлен');
+      setMessage('Пригласитель обновлен');
       setLoading(false);
 
       // update NextAuth token
-      await update({ username: actionResponse.data.inviter });
+      await update({ inviter: actionResponse.data.inviter });
       // refresh server components
       router.refresh();
     }
@@ -62,21 +59,21 @@ export default function AddInviter({ username }: Props) {
   return (
     <div className='mb-2'>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='username' className='block italic'>
-          Username:
+        <label htmlFor='inviter' className='block italic'>
+          Inviter:
         </label>
         <div className='flex gap-1'>
-          {!edit && <div>{username}</div>}
+          {!edit && <div>{inviter}</div>}
           {edit && (
             <>
               <input
                 type='text'
                 className='input'
                 required
-                name='username'
-                id='username'
-                value={newUsername}
-                onChange={(e) => setNewUsername(e.target.value)}
+                name='inviter'
+                id='inviter'
+                value={newInviter}
+                onChange={(e) => setNewInviter(e.target.value)}
               />
               <button
                 type='submit'
@@ -94,7 +91,7 @@ export default function AddInviter({ username }: Props) {
               setEdit((prev) => !prev);
               setError(null);
               setMessage(null);
-              setNewUsername(username);
+              setNewInviter(inviter);
             }}
             className='underline ml-1'
           >
