@@ -24,7 +24,7 @@ export default function EditInviter({ inviter }: Props) {
     setLoading(true);
 
     // validate newInviter
-    if (newInviter === '' || newInviter.length == 9) {
+    if (newInviter === '' || newInviter.length != 9) {
       setError('Код пригласителя должен содержать 9 знаков');
       setLoading(false);
       return;
@@ -63,7 +63,7 @@ export default function EditInviter({ inviter }: Props) {
           Inviter:
         </label>
         <div className='flex gap-1'>
-          {!edit && <div>{inviter ? inviter : 'Нет пригласителя'}</div>}
+          {!edit && <div>{inviter ? inviter : 'Нет пригласител'}</div>}
           {edit && (
             <>
               <input

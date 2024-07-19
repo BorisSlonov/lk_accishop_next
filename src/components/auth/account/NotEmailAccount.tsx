@@ -29,9 +29,6 @@ export default async function NotEmailAccount() {
       <div className='mb-8'>
         <h3 className={styles.h3}>Данные аккаунта</h3>
         <EditInviter inviter={currentUser.inviter} />
-        <div className='mb-2'>
-          Последнее обновление: {new Date(currentUser.updatedAt).toLocaleString()}
-        </div>
       </div>
   
     </div>

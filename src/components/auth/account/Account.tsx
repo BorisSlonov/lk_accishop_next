@@ -19,9 +19,6 @@ export default async function Account() {
           <div className='block italic'>Email: </div>
           <div>{currentUser.email}</div>
         </div>
-        <div className='mb-2'>
-          Последнее обновление: {new Date(currentUser.updatedAt).toLocaleString()}
-        </div>
       </div>
 
       <div className='mb-8'>
