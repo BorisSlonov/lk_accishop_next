@@ -9,7 +9,7 @@ export default async function EditInviterAction(newInviter: string): Promise<Edi
   // Perform your server request to update the inviter here
   // For example:
   try {
-    const response = await fetch('/api/updateMe', {
+    const response = await fetch('/api/user/me', {
       method: 'POST',
       body: JSON.stringify({ inviter: newInviter }),
       headers: {
