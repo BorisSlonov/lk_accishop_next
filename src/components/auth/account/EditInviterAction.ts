@@ -1,3 +1,6 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
+import { getServerSession } from "next-auth";
+
 // editInviterAction.js
 export type EditInviterActionT = {
   error: boolean;
@@ -5,17 +8,23 @@ export type EditInviterActionT = {
   data?: { inviter: string };
 };
 
-export default async function EditInviterAction(newInviter: string): Promise<EditInviterActionT> {
-  // Perform your server request to update the inviter here
-  // For example:
+export default async function EditInviterAction(inviter: string): Promise<EditInviterActionT> {
+  const session = await getServerSession(authOptions);
   try {
-    const response = await fetch('/api/user/me', {
-      method: 'POST',
-      body: JSON.stringify({ inviter: newInviter }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const response = await fetch(
+      process.env.STRAPI_BACKEND_URL + 'api/user/me',
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${session?.strapiToken}`,
+        },
+        body: JSON.stringify({
+          inviter,
+        }),
+        cache: 'no-cache',
+      }
+    );
 
     const data = await response.json();
 
@@ -25,6 +34,6 @@ export default async function EditInviterAction(newInviter: string): Promise<Edi
 
     return { error: false, message: 'Success', data };
   } catch (error) {
-    return { error: true, message:  'Something went wrong' };
+    return { error: true, message: 'Something went wrong' };
   }
 }
