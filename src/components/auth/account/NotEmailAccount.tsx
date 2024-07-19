@@ -3,7 +3,7 @@ import { getCurrentUser } from '@/lib/fetchData/getCurrentUser';
 import { getServerSession } from 'next-auth';
 import EditUsername from './EditUsername';
 import styles from './Account.module.css'
-import AddInviter from './AddInviter';
+import EditInviter from './EditInviter';
 
 export default async function NotEmailAccount() {
   const session = await getServerSession(authOptions);
@@ -28,7 +28,7 @@ export default async function NotEmailAccount() {
 
       <div className='mb-8'>
         <h3 className={styles.h3}>Данные аккаунта</h3>
-        <AddInviter username={currentUser.inviter} />
+        <EditInviter inviter={currentUser.inviter} />
         <div className='mb-2'>
           Последнее обновление: {new Date(currentUser.updatedAt).toLocaleString()}
         </div>
