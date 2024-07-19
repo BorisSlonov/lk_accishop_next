@@ -24,19 +24,14 @@ export default function EditInviter({ inviter }: Props) {
     setLoading(true);
 
     // validate newInviter
-    if (newInviter === '') {
-      setError('Введите код инвайтера');
-      setLoading(false);
-      return;
-    }
-    if (newInviter.length != 9) {
+    if (newInviter === '' || newInviter.length != 9) {
       setError('Код пригласителя должен содержать 9 знаков');
       setLoading(false);
       return;
     }
 
     // call server action
-    const actionResponse: EditInviterActionT = await EditInviterAction(newInviter);
+    const actionResponse: EditInviterActionT = await EditInviterAction(newInviter ? newInviter : 'пусто');
 
     // handle error
     if (actionResponse.error) {
@@ -47,9 +42,7 @@ export default function EditInviter({ inviter }: Props) {
     }
 
     // handle success
-    // inviter is updated in DB and getCurrentUser fetch was updated with revalidateTag
-    if (!actionResponse.error && actionResponse.message === 'Success' && actionResponse.data) {
-      // inform user of success
+    if (!actionResponse.error && actionResponse.message === 'Success') {
       setError(null);
       setMessage('Пригласитель обновлен');
       setLoading(false);
@@ -68,7 +61,7 @@ export default function EditInviter({ inviter }: Props) {
           Inviter:
         </label>
         <div className='flex gap-1'>
-          {!edit && <div>{inviter ? inviter : 'Нет пригласител'}</div>}
+          {!edit && <div>{inviter || 'Нет пригласителя'}</div>}
           {edit && (
             <>
               <input

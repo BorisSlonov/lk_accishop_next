@@ -1,18 +1,30 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
-import { getServerSession } from "next-auth";
+'use server';
 
-// editInviterAction.js
-export type EditInviterActionT = {
-  error: boolean;
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
+import { StrapiErrorT } from '@/types/strapi/StrapiError';
+import { revalidateTag } from 'next/cache';
+
+type ActionErrorT = {
+  error: true;
   message: string;
-  data?: { inviter: string };
 };
+type ActionSuccessT = {
+  error: false;
+  message: 'Success';
+  data: {
+    inviter: string;
+  };
+};
+export type EditInviterActionT = ActionErrorT | ActionSuccessT;
 
-export default async function EditInviterAction(inviter: string): Promise<EditInviterActionT> {
+export default async function editInviterAction(
+  inviter: string
+): Promise<EditInviterActionT> {
   const session = await getServerSession(authOptions);
   try {
-    const response = await fetch(
-      process.env.STRAPI_BACKEND_URL + 'api/user/me',
+    const strapiResponse = await fetch(
+      process.env.STRAPI_BACKEND_URL + 'api/user/update-inviter',
       {
         method: 'PUT',
         headers: {
@@ -26,14 +38,34 @@ export default async function EditInviterAction(inviter: string): Promise<EditIn
       }
     );
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      return { error: true, message: data.message || 'Something went wrong' };
+    if (!strapiResponse.ok) {
+      const response: ActionErrorT = {
+        error: true,
+        message: '',
+      };
+      const contentType = strapiResponse.headers.get('content-type');
+      if (contentType === 'application/json; charset=utf-8') {
+        const data: StrapiErrorT = await strapiResponse.json();
+        response.message = data.error.message;
+      } else {
+        response.message = strapiResponse.statusText;
+      }
+      return response;
     }
 
-    return { error: false, message: 'Success', data };
-  } catch (error) {
-    return { error: true, message: 'Something went wrong' };
+    revalidateTag('strapi-users-me');
+    const data = await strapiResponse.json();
+    return {
+      error: false,
+      message: 'Success',
+      data: {
+        inviter: data.inviter as string,
+      },
+    };
+  } catch (error: any) {
+    return {
+      error: true,
+      message: 'message' in error ? error.message : error.statusText,
+    };
   }
 }
