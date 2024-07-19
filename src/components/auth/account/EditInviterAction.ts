@@ -5,7 +5,7 @@ export type EditInviterActionT = {
   data?: { inviter: string };
 };
 
-export default async function editInviterAction(newInviter: string): Promise<EditInviterActionT> {
+export default async function EditInviterAction(newInviter: string): Promise<EditInviterActionT> {
   // Perform your server request to update the inviter here
   // For example:
   try {
@@ -25,6 +25,6 @@ export default async function editInviterAction(newInviter: string): Promise<Edi
 
     return { error: false, message: 'Success', data };
   } catch (error) {
-    return { error: true, message: error.message || 'Something went wrong' };
+    return { error: true, message:  'Something went wrong' };
   }
 }
