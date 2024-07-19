@@ -24,8 +24,13 @@ export default function EditInviter({ inviter }: Props) {
     setLoading(true);
 
     // validate newInviter
-    if (newInviter === '' || newInviter.length != 9) {
-      setError(`Код пригласителя должен содержать 9 знаков: ${newInviter}`);
+    if (newInviter === '') {
+      setError('Введите код инвайтера');
+      setLoading(false);
+      return;
+    }
+    if (newInviter.length != 9) {
+      setError('Код пригласителя должен содержать 9 знаков');
       setLoading(false);
       return;
     }
