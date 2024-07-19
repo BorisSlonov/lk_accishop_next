@@ -3,6 +3,7 @@ import { getCurrentUser } from '@/lib/fetchData/getCurrentUser';
 import { getServerSession } from 'next-auth';
 import EditUsername from './EditUsername';
 import styles from './Account.module.css'
+import AddInviter from './AddInviter';
 
 export default async function NotEmailAccount() {
   const session = await getServerSession(authOptions);
@@ -18,19 +19,21 @@ export default async function NotEmailAccount() {
           <div className='block italic'>Email: </div>
           <div>{currentUser.email}</div>
         </div>
-        <div className='mb-2'>
-          Последнее обновление: {new Date(currentUser.updatedAt).toLocaleString()}
-        </div>
       </div>
 
       <div className='mb-8'>
         <h3 className={styles.h3}>Вы зарегистрированы через</h3>
         {currentUser.provider}
       </div>
+
       <div className='mb-8'>
-        <h3 className={styles.h3}>Вы зарегистрированы через</h3>
-        {currentUser.provider}
+        <h3 className={styles.h3}>Данные аккаунта</h3>
+        <AddInviter username={currentUser.inviter} />
+        <div className='mb-2'>
+          Последнее обновление: {new Date(currentUser.updatedAt).toLocaleString()}
+        </div>
       </div>
+  
     </div>
   );
 }

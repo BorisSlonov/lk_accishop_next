@@ -9,7 +9,7 @@ type Props = {
   username: string;
 };
 
-export default function addInviter({ username }: Props) {
+export default function AddInviter({ username }: Props) {
   const [edit, setEdit] = useState(false);
   const [newUsername, setNewUsername] = useState(username);
   const [error, setError] = useState<null | string>(null);
