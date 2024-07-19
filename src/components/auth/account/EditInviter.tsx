@@ -63,7 +63,7 @@ export default function EditInviter({ inviter }: Props) {
           Inviter:
         </label>
         <div className='flex gap-1'>
-          {!edit && <div>{inviter}</div>}
+          {!edit && <div>{inviter ? inviter : 'Нет пригласителя'}</div>}
           {edit && (
             <>
               <input
