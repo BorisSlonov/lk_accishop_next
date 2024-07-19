@@ -1,7 +1,7 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import editInviterAction, { EditInviterActionT } from './EditInviterAction';
+import EditInviterAction, { EditInviterActionT } from './EditInviterAction';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
@@ -36,7 +36,7 @@ export default function EditInviter({ inviter }: Props) {
     }
 
     // call server action
-    const actionResponse: EditInviterActionT = await editInviterAction(newInviter);
+    const actionResponse: EditInviterActionT = await EditInviterAction(newInviter);
 
     // handle error
     if (actionResponse.error) {
