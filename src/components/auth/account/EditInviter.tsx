@@ -24,8 +24,8 @@ export default function EditInviter({ inviter }: Props) {
     setLoading(true);
 
     // validate newInviter
-    if (newInviter === '' || newInviter.length < 4) {
-      setError('Inviter is too short.');
+    if (newInviter === '' || newInviter.length == 9) {
+      setError('Код пригласителя должен содержать 9 знаков');
       setLoading(false);
       return;
     }
@@ -43,7 +43,7 @@ export default function EditInviter({ inviter }: Props) {
 
     // handle success
     // inviter is updated in DB and getCurrentUser fetch was updated with revalidateTag
-    if (!actionResponse.error && actionResponse.message === 'Success') {
+    if (!actionResponse.error && actionResponse.message === 'Success' && actionResponse.data) {
       // inform user of success
       setError(null);
       setMessage('Пригласитель обновлен');
