@@ -49,7 +49,7 @@ export default function EditUsername({ username }: Props) {
     if (!actionResponse.error && actionResponse.message === 'Success') {
       // inform user of success
       setError(null);
-      setMessage('Юзерней обновлен');
+      setMessage('Юзернейм обновлен');
       setLoading(false);
 
       // update NextAuth token
