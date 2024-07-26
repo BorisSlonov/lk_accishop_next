@@ -140,7 +140,7 @@ export const authOptions: NextAuthOptions = {
   },
   cookies: {
     sessionToken: {
-      name: `next-auth.session-token`,
+      name: `next-auth_session-token`,
       options: {
         domain: '.accishop.ru',
         path: '/',
@@ -150,7 +150,7 @@ export const authOptions: NextAuthOptions = {
       },
     },
     callbackUrl: {
-      name: `next-auth.callback-url`,
+      name: `next-auth_callback-url`,
       options: {
         domain: '.accishop.ru',
         path: '/',
@@ -159,7 +159,7 @@ export const authOptions: NextAuthOptions = {
       },
     },
     csrfToken: {
-      name: `next-auth.csrf-token`,
+      name: `next-auth_csrf-token`,
       options: {
         domain: '.accishop.ru',
         path: '/',
