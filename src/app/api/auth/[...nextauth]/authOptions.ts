@@ -144,7 +144,7 @@ export const authOptions: NextAuthOptions = {
       options: {
         domain: '.accishop.ru',
         path: '/',
-        httpOnly: true,
+        httpOnly: false,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
       },
@@ -163,7 +163,7 @@ export const authOptions: NextAuthOptions = {
       options: {
         domain: '.accishop.ru',
         path: '/',
-        httpOnly: true,
+        httpOnly: false,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
       },
