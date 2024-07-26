@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const response = await fetch(
-      process.env.STRAPI_BACKEND_URL + 'api/user/me',
+      process.env.STRAPI_BACKEND_URL + 'api/updateInviter',
       {
         method: 'PUT',
         headers: {
