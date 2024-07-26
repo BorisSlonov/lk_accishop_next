@@ -139,33 +139,75 @@ export const authOptions: NextAuthOptions = {
     strategy: 'jwt',
   },
   cookies: {
-    sessionToken: {
-      name: `next-auth.session-token`,
-      options: {
-        domain: '.accishop.ru',
-        path: '/',
-        httpOnly: false,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+    cookies: {
+      sessionToken: {
+        name: `next-auth.session-token`,
+        options: {
+          domain: '.accishop.ru',
+          path: '/',
+          httpOnly: false,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        },
       },
-    },
-    callbackUrl: {
-      name: `next-auth.callback-url`,
-      options: {
-        domain: '.accishop.ru',
-        path: '/',
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+      strapiToken: {
+        name: `next-auth.strapi-token`,
+        options: {
+          domain: '.accishop.ru',
+          path: '/',
+          httpOnly: false, // Set to true if you want to prevent client-side access
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        },
       },
-    },
-    csrfToken: {
-      name: `next-auth.csrf-token`,
-      options: {
-        domain: '.accishop.ru',
-        path: '/',
-        httpOnly: false,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+      provider: {
+        name: `next-auth.provider`,
+        options: {
+          domain: '.accishop.ru',
+          path: '/',
+          httpOnly: false, // Set to true if you want to prevent client-side access
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        },
+      },
+      strapiUserId: {
+        name: `next-auth.strapi-user-id`,
+        options: {
+          domain: '.accishop.ru',
+          path: '/',
+          httpOnly: false, // Set to true if you want to prevent client-side access
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        },
+      },
+      blocked: {
+        name: `next-auth.blocked`,
+        options: {
+          domain: '.accishop.ru',
+          path: '/',
+          httpOnly: false, // Set to true if you want to prevent client-side access
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        },
+      },
+      callbackUrl: {
+        name: `next-auth.callback-url`,
+        options: {
+          domain: '.accishop.ru',
+          path: '/',
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        },
+      },
+      csrfToken: {
+        name: `next-auth.csrf-token`,
+        options: {
+          domain: '.accishop.ru',
+          path: '/',
+          httpOnly: false, // Set to true if you want to prevent client-side access
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        },
       },
     },
   },
