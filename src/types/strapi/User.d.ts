@@ -1,4 +1,5 @@
 export type StrapiUserT = {
+  reflink: string;
   id: number;
   username: string;
   email: string;

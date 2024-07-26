@@ -1,8 +1,10 @@
+// authOptions.ts
 import { StrapiErrorT } from '@/types/strapi/StrapiError';
 import { StrapiLoginResponseT } from '@/types/strapi/User';
 import { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import generateRandomString from '@/components/auth/signup/generateRandomString';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -69,7 +71,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      // console.log('singIn callback', { account, profile, user });
+      // console.log('signIn callback', { account, profile, user });
       if (
         account &&
         account.provider === 'google' &&
@@ -115,12 +117,30 @@ export const authOptions: NextAuthOptions = {
             }
             const strapiLoginResponse: StrapiLoginResponseT =
               await strapiResponse.json();
+
             // customize token
             // name and email will already be on here
             token.strapiToken = strapiLoginResponse.jwt;
             token.strapiUserId = strapiLoginResponse.user.id;
             token.provider = account.provider;
             token.blocked = strapiLoginResponse.user.blocked;
+
+            // Assign random reflink if it doesn't exist
+            if (!strapiLoginResponse.user.reflink) {
+              const randomReflink = generateRandomString(9);
+              await fetch(`${process.env.STRAPI_BACKEND_URL}api/users/${strapiLoginResponse.user.id}`, {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${strapiLoginResponse.jwt}`,
+                },
+                body: JSON.stringify({ reflink: randomReflink }),
+              });
+              token.reflink = randomReflink;
+            } else {
+              token.reflink = strapiLoginResponse.user.reflink;
+            }
+
           } catch (error) {
             throw error;
           }
@@ -132,6 +152,7 @@ export const authOptions: NextAuthOptions = {
           token.strapiUserId = user.strapiUserId;
           token.provider = account.provider;
           token.blocked = user.blocked;
+          token.reflink = user.reflink; // Assuming user.reflink is present
         }
       }
       return token;
@@ -146,6 +167,7 @@ export const authOptions: NextAuthOptions = {
       session.provider = token.provider;
       session.user.strapiUserId = token.strapiUserId;
       session.user.blocked = token.blocked;
+      session.user.reflink = token.reflink; // Add reflink to session
 
       return session;
     },

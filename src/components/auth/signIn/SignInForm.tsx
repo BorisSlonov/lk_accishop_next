@@ -21,7 +21,7 @@ const formSchema = z.object({
   identifier: z.string().min(2).max(30),
   password: z
     .string()
-    .min(6, { message: 'Password must be at least 8 characters long.' })
+    .min(6, { message: 'Пароль должен быть больше 6 символов.' })
     .max(30),
 });
 

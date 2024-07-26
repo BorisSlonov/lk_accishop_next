@@ -27,10 +27,10 @@ export default async function NotEmailAccount() {
       </div>
 
       <div className='mb-8'>
-        <h3 className={styles.h3}>Данные аккаунта</h3>
+        <h3 className={styles.h3}>Пригласитель</h3>
         <EditInviter inviter={currentUser.inviter} />
       </div>
-  
+
     </div>
   );
 }
