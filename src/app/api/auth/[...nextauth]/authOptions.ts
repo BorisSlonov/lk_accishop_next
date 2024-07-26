@@ -140,7 +140,7 @@ export const authOptions: NextAuthOptions = {
   },
   cookies: {
     sessionToken: {
-      name: `next-auth.session-token`,
+      name: `next-auth_session-token`,
       options: {
         domain: '.accishop.ru',
         path: '/',
