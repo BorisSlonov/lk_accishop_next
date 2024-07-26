@@ -4,6 +4,7 @@ import { getServerSession } from 'next-auth';
 import EditUsername from './EditUsername';
 import ChangePassword from '../password/ChangePassword';
 import styles from './Account.module.css'
+import EditInviter from './EditInviter';
 
 export default async function Account() {
   const session = await getServerSession(authOptions);
@@ -24,6 +25,11 @@ export default async function Account() {
       <div className='mb-8'>
         <h3 className={styles.h3}>Смена пароля</h3>
         <ChangePassword />
+      </div>
+
+      <div className='mb-8'>
+        <h3 className={styles.h3}>Пригласитель</h3>
+        <EditInviter inviter={currentUser.inviter} />
       </div>
     </div>
   );
