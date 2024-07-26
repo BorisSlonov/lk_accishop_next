@@ -152,7 +152,6 @@ export const authOptions: NextAuthOptions = {
           token.strapiUserId = user.strapiUserId;
           token.provider = account.provider;
           token.blocked = user.blocked;
-          token.reflink = user.reflink; // Assuming user.reflink is present
         }
       }
       return token;
@@ -167,7 +166,6 @@ export const authOptions: NextAuthOptions = {
       session.provider = token.provider;
       session.user.strapiUserId = token.strapiUserId;
       session.user.blocked = token.blocked;
-      session.user.reflink = token.reflink; // Add reflink to session
 
       return session;
     },
