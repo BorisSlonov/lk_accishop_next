@@ -1,4 +1,3 @@
-// authOptions.ts
 import { StrapiErrorT } from '@/types/strapi/StrapiError';
 import { StrapiLoginResponseT } from '@/types/strapi/User';
 import { NextAuthOptions } from 'next-auth';
@@ -22,7 +21,6 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password *', type: 'password' },
       },
       async authorize(credentials, req) {
-        // make sure the are credentials
         if (!credentials || !credentials.identifier || !credentials.password) {
           return null;
         }
@@ -42,7 +40,6 @@ export const authOptions: NextAuthOptions = {
           );
 
           if (!strapiResponse.ok) {
-            // return error to signIn callback
             const contentType = strapiResponse.headers.get('content-type');
             if (contentType === 'application/json; charset=utf-8') {
               const data: StrapiErrorT = await strapiResponse.json();
@@ -52,7 +49,6 @@ export const authOptions: NextAuthOptions = {
             }
           }
 
-          // success
           const data: StrapiLoginResponseT = await strapiResponse.json();
           return {
             name: data.user.username,
@@ -63,7 +59,6 @@ export const authOptions: NextAuthOptions = {
             strapiToken: data.jwt,
           };
         } catch (error) {
-          // Catch errors in try but also f.e. connection fails
           throw error;
         }
       },
@@ -71,40 +66,22 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      // console.log('signIn callback', { account, profile, user });
-      if (
-        account &&
-        account.provider === 'google' &&
-        profile &&
-        'email_verified' in profile
-      ) {
+      if (account && account.provider === 'google' && profile && 'email_verified' in profile) {
         if (!profile.email_verified) return false;
       }
       return true;
     },
 
     async jwt({ token, trigger, account, user, session }) {
-      // console.log('jwt callback', {
-      //   token,
-      //   trigger,
-      //   account,
-      //   user,
-      //   session,
-      // });
-
-      // change username update
       if (trigger === 'update' && session?.username) {
         token.name = session.username;
       }
-
-      // change password update
       if (trigger === 'update' && session?.strapiToken) {
         token.strapiToken = session.strapiToken;
       }
 
       if (account) {
         if (account.provider === 'google') {
-          // we now know we are doing a sign in using GoogleProvider
           try {
             const strapiResponse = await fetch(
               `${process.env.STRAPI_BACKEND_URL}api/auth/${account.provider}/callback?access_token=${account.access_token}`,
@@ -112,20 +89,15 @@ export const authOptions: NextAuthOptions = {
             );
             if (!strapiResponse.ok) {
               const strapiError: StrapiErrorT = await strapiResponse.json();
-              // console.log('strapiError', strapiError);
               throw new Error(strapiError.error.message);
             }
-            const strapiLoginResponse: StrapiLoginResponseT =
-              await strapiResponse.json();
+            const strapiLoginResponse: StrapiLoginResponseT = await strapiResponse.json();
 
-            // customize token
-            // name and email will already be on here
             token.strapiToken = strapiLoginResponse.jwt;
             token.strapiUserId = strapiLoginResponse.user.id;
             token.provider = account.provider;
             token.blocked = strapiLoginResponse.user.blocked;
 
-            // Assign random reflink if it doesn't exist
             if (!strapiLoginResponse.user.reflink) {
               const randomReflink = generateRandomString(9);
               await fetch(`${process.env.STRAPI_BACKEND_URL}api/users/${strapiLoginResponse.user.id}`, {
@@ -146,8 +118,6 @@ export const authOptions: NextAuthOptions = {
           }
         }
         if (account.provider === 'credentials') {
-          // for credentials, not google provider
-          // name and email are taken care of by next-auth or authorize
           token.strapiToken = user.strapiToken;
           token.strapiUserId = user.strapiUserId;
           token.provider = account.provider;
@@ -157,11 +127,6 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ token, session }) {
-      // console.log('session callback', {
-      //   token,
-      //   session,
-      // });
-
       session.strapiToken = token.strapiToken;
       session.provider = token.provider;
       session.user.strapiUserId = token.strapiUserId;
@@ -172,6 +137,37 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: 'jwt',
+  },
+  cookies: {
+    sessionToken: {
+      name: `next-auth.session-token`,
+      options: {
+        domain: '.accishop.ru',
+        path: '/',
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+      },
+    },
+    callbackUrl: {
+      name: `next-auth.callback-url`,
+      options: {
+        domain: '.accishop.ru',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+      },
+    },
+    csrfToken: {
+      name: `next-auth.csrf-token`,
+      options: {
+        domain: '.accishop.ru',
+        path: '/',
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+      },
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {

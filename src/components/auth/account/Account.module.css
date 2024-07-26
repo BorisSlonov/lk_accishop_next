@@ -1,4 +1,7 @@
 .block {
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
     padding: 48px 24px;
     border-radius: 10px;
     background: var(--BG-2, linear-gradient(358deg, #151430 1.41%, #383753 97.58%));
@@ -7,4 +10,10 @@
 
 .h3 {
     color: #00EFD1;
+}
+
+@media(max-width:767px) {
+    .block {
+        flex-direction: column;
+    }
 }
