@@ -1,5 +1,6 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
 import { useFormState } from 'react-dom';
 import signUpAction from './signUpAction';
 import PendingSubmitButton from '../PendingSubmitButton';
@@ -31,16 +32,24 @@ const initialState: SignUpFormInitialStateT = {
 };
 
 export default function SignUpForm() {
+  const searchParams = useSearchParams();
+  const ref = searchParams.get('ref');
+  
   const [state, formAction] = useFormState<SignUpFormStateT, FormData>(
     signUpAction,
     initialState
   );
 
   const [randomReflink, setRandomReflink] = useState('');
+  const [inviter, setInviter] = useState(ref || '');
 
   useEffect(() => {
     setRandomReflink(generateRandomString(9));
-  }, []);
+    if (ref) {
+      setInviter(ref);
+    }
+  }, [ref]);
+
   return (
     <form className='my-8' action={formAction}>
       <div className='mb-3'>
@@ -96,12 +105,14 @@ export default function SignUpForm() {
       </div>
       <div className='mb-3'>
         <label htmlFor='inviter' className='block mb-1'>
-         Код пригласителя
+          Код пригласителя
         </label>
         <input
           type='text'
           id='inviter'
           name='inviter'
+          value={inviter}
+          onChange={(e) => setInviter(e.target.value)}
           className='bg-white border border-zinc-300 w-full rounded-sm p-2'
         />
         {state.error && state?.inputErrors?.inviter ? (
@@ -119,6 +130,7 @@ export default function SignUpForm() {
           id='reflink'
           name='reflink'
           value={randomReflink}
+          readOnly
           className='bg-white border border-zinc-300 w-full rounded-sm p-2'
         />
         {state.error && state?.inputErrors?.reflink ? (
