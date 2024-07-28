@@ -27,11 +27,13 @@ export default async function History() {
       {<ul className={styles.list}>
         {currentUser.orders.length >= 1 ? currentUser.orders.map((order: Order, index: number) => (
           <li className={styles.list_item} key={index}>
-            <p className={styles.product_name}>{order.product_name}</p>
+            <p className={styles.name}>{order.name}</p>
+            <p className={styles.name}>{order.count + 'шт'}</p>
+            <p className={styles.name}>{order.price + 'р'}</p>
             <div className={styles.links}>
-              <Link className={styles.link} href={order.order_id ? order.order_id : '/'}>Скачать</Link>
+              <Link className={styles.link} href={'https://accishop.ru/order/' + order.bill ? order.bill : '/'}>Скачать</Link>
               <div className={styles.dev}></div>
-              <Link className={styles.link} href={order.product_link}>Повторить</Link>
+              <Link className={styles.link} href={'https://accishop.ru/catalog'}>Повторить</Link>
             </div>
           </li>
         )) : 'Тут пока пусто..'}

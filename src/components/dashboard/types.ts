@@ -1,12 +1,10 @@
 // types.ts
 
 interface Order {
-    order_id: string;
-    id: number;
-    product_name: string;
-    product_link: string;
+    name: string;
+    bill: string;
     price: number;
-    order_date: Date;
+    count: number;
 }
 
 interface Rank {
