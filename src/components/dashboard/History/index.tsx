@@ -28,12 +28,12 @@ export default async function History() {
         {currentUser.orders.length >= 1 ? currentUser.orders.map((order: Order, index: number) => (
           <li className={styles.list_item} key={index}>
             <p className={styles.name}>{order.name}</p>
-            <p className={styles.name}>{order.count + 'шт'}</p>
-            <p className={styles.name}>{order.price + 'р'}</p>
             <div className={styles.links}>
-              <Link className={styles.link} href={'https://accishop.ru/order/' + order.bill ? order.bill : '/'}>Скачать</Link>
+              <p className={styles.link}>{order.count + 'шт'}</p>
               <div className={styles.dev}></div>
-              <Link className={styles.link} href={'https://accishop.ru/catalog'}>Повторить</Link>
+              <p className={styles.link}>{order.price + 'р'}</p>
+              <div className={styles.dev}></div>
+              <Link className={styles.link} href={'https://accishop.ru/order/' + order.bill ? order.bill : '/'}>Скачать</Link>
             </div>
           </li>
         )) : 'Тут пока пусто..'}
