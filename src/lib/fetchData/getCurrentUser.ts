@@ -5,6 +5,7 @@ export async function getCurrentUser(token: string) {
   const options = {
     headers: {
       Authorization: `Bearer ${token}`,
+      'X-Secret-Key': process.env.ORDER_SECRET
     },
     next: { tags: ['strapi-users-me'] },
   };
