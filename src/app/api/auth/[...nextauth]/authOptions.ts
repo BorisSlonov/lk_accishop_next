@@ -105,6 +105,7 @@ export const authOptions: NextAuthOptions = {
                 headers: {
                   'Content-Type': 'application/json',
                   Authorization: `Bearer ${strapiLoginResponse.jwt}`,
+                  'X-Secret-Key': `${process.env.ORDER_SECRET}`
                 },
                 body: JSON.stringify({ reflink: randomReflink }),
               });
