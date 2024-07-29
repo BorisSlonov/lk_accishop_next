@@ -11,9 +11,10 @@ export default async function Account() {
   const currentUser = await getCurrentUser(session!.strapiToken!);
   return (
     <>
-      <h2 className='font-bold text-lg mb-4'>Настройки аккаунта</h2>
       <div className={styles.block}>
-        <div className=''>
+        <h2 className='font-bold text-lg mb-4'>Настройки аккаунта</h2>
+
+        <div className='mb-16'>
           <h3 className={styles.h3}>Данные аккаунта</h3>
           <EditUsername username={currentUser.username} />
           <div className='mb-2'>
@@ -22,16 +23,17 @@ export default async function Account() {
           </div>
         </div>
 
-        <div className=''>
+        <div className='mb-16'>
           <h3 className={styles.h3}>Смена пароля</h3>
           <ChangePassword />
         </div>
 
-        <div className=''>
+        <div className='mb-16'>
           <h3 className={styles.h3}>Пригласитель</h3>
           <EditInviter inviter={currentUser.inviter} />
         </div>
       </div>
     </>
+
   );
 }
