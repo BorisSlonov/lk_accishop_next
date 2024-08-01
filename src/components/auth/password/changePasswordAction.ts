@@ -50,6 +50,7 @@ export default async function resetPasswordAction(
         headers: {
           'Content-Type': 'application/json',
           Authorization: 'Bearer ' + session.strapiToken,
+          'X-Secret-Key': `${process.env.ORDER_SECRET}`
         },
         body: JSON.stringify({
           currentPassword,

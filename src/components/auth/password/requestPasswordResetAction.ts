@@ -30,6 +30,7 @@ export default async function requestPasswordResetAction(
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-Secret-Key': `${process.env.ORDER_SECRET}`
         },
         body: JSON.stringify({ email }),
         cache: 'no-cache',

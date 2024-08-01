@@ -34,6 +34,7 @@ export default async function resetPasswordAction(
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-Secret-Key': `${process.env.ORDER_SECRET}`
         },
         body: JSON.stringify({
           password,

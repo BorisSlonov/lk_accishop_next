@@ -31,6 +31,7 @@ export default async function confirmNewRequestAction(
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-Secret-Key': `${process.env.ORDER_SECRET}`
         },
         body: JSON.stringify({ email }),
         cache: 'no-cache',
