@@ -1,0 +1,87 @@
+.mobileMenu {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s;
+  display: none;
+  padding: 16px;
+  min-height: 100vh;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.closeBtn {
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.btnLinks {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.loginLink {
+  width: 100%;
+  padding: 16px 32px;
+  border-radius: 50px;
+  border: 1px solid var(--black);
+  background: var(--white-10);
+  backdrop-filter: blur(4px);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--black);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.joinLink {
+  width: 100%;
+  padding: 16px 32px;
+  border-radius: 50px;
+  border: 1px solid var(--black);
+  background: var(--purple-main);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+body:has(.showMenu) {
+  overflow: hidden;
+}
+
+.showMenu {
+  transform: translateX(0);
+}
+
+.hideMenu {
+  transform: translateX(100%);
+}
+
+@media (max-width: 767px) {
+  .mobileMenu {
+    display: block;
+  }
+}

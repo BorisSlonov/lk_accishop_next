@@ -1,0 +1,239 @@
+.section {
+    padding-top: 36px;
+    position: relative;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    background-image: url('/abstract/1.png');
+    background-size: contain;
+    transform: rotate(60deg);
+    width: 900px;
+    height: 900px;
+    left: 20%;
+    top: -470px;
+}
+
+@media(min-width:1921px) {
+    .section::before {
+        left: 25%;
+    }
+}
+
+.body {
+    display: grid;
+    grid-template-areas: "item1 item2"
+        "item1 item3";
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto;
+    gap: 20px;
+}
+
+.item {
+    padding: 45px 37px;
+    border-radius: 35px;
+}
+
+.item1 {
+    grid-area: item1;
+    background: #1E1E1E;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.item2 {
+    grid-area: item2;
+    position: relative;
+    border-radius: 35px;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(25px);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.item2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(100deg, rgba(30, 30, 30, 0) 5%, rgba(30, 30, 30, 1) 100%);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0) border-box;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0) border-box;
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+}
+
+
+.item3 {
+    grid-area: item3;
+    border-radius: 35px;
+    background: #E3A55F;
+    backdrop-filter: blur(7.5px);
+}
+
+.begin {
+    color: #FFF;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 110%;
+}
+
+.accentColor {
+    color: #7BF2DA;
+    white-space: nowrap;
+}
+
+.socials {
+    display: flex;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.h1 {
+    color: #FFF;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 110%;
+}
+
+.h1Subtitle {
+    margin-top: 12px;
+    color: #F1E8E2;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Futura PT";
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 119%;
+}
+
+.h3 {
+    color: #1E1E1E;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 110%;
+    text-transform: uppercase;
+}
+
+.programs,
+.rolesList {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 10px;
+}
+
+.programs {
+    margin-top: 12px;
+}
+
+.rolesList {
+    margin-top: 66px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 35px;
+    color: #1E1E1E;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 100%;
+    text-transform: uppercase;
+    border-radius: 50px;
+    border: 2px solid #1E1E1E;
+    text-align: center;
+}
+
+@media(max-width:1360px) {
+
+    .section::before {
+        left: 0
+    }
+
+    .begin {
+        font-size: 46px;
+    }
+
+    .h1,
+    .h3 {
+        font-size: 38px;
+    }
+}
+
+@media(max-width:1023px) {
+    .body {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media(max-width:767px) {
+    .begin {
+        font-size: 38px;
+    }
+
+    .h1,
+    .h3 {
+        font-size: 38px;
+    }
+
+    .programs,
+    .rolesList {
+        margin-top: 16px;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    .socialIcon {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media(max-width: 445px) {
+    .begin {
+        font-size: 28px;
+    }
+
+    .h1,
+    .h3 {
+        font-size: 28px;
+    }
+
+
+    .h1Subtitle {
+        font-size: 16px;
+    }
+
+    .programs,
+    .rolesList {
+        flex-direction: column;
+    }
+
+    .btn {
+        padding: 12px 16px;
+        font-size: 14px;
+        justify-content: center;
+        align-items: center;
+    }
+}

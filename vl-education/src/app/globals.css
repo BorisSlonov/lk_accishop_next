@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  width: 100vw;
+  scroll-padding-top: 80px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+}
+
+html,
+body {
+  font-size: 16px;
+  color: #1E1E1E;
+  font-family: "Futura PT";
+  font-feature-settings: 'liga' off, 'clig' off;
+}
+
+button {
+  cursor: pointer;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.bottomToTop,
+.topToBottom,
+.rightToLeft,
+.leftToRight {
+  opacity: 0;
+  transition: all .3s !important;
+  will-change: opacity, transform;
+}
+
+.bottomToTop {
+  transform: translateY(50px);
+}
+
+.topToBottom {
+  transform: translateY(-50px);
+}
+
+.rightToLeft {
+  transform: translateX(50px);
+}
+
+.leftToRight {
+  transform: translateX(-50px);
+}
+
+.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+.h2 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 110%;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+@media(max-width:767px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .h2 {
+    font-size: 30px;
+  }
+}

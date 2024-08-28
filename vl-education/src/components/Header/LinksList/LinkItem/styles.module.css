@@ -1,0 +1,12 @@
+.linkItem {
+  padding: 12px 0;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: color 0.3s;
+}
+
+.linkItem:hover {
+  color: #E3A55F;
+}

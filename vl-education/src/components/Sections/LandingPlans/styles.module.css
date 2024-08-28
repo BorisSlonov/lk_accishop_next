@@ -1,0 +1,158 @@
+.section {
+    padding-top: 80px;
+    overflow: hidden;
+}
+
+.body {
+    display: flex;
+    gap: 20px;
+}
+
+.item {
+    flex-basis: calc(100% / 3);
+    padding: 45px 40px 60px;
+    border-radius: 35px;
+}
+
+.h3 {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 120%;
+    text-transform: uppercase;
+}
+
+.label {
+    display: inline-flex;
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 120%;
+    padding: 4px 24px;
+    border-radius: 50px;
+    background-color: #E3A55F;
+}
+
+.h4 {
+    margin-top: 40px;
+    color: #383939;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 100%;
+}
+
+.ul {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.li {
+    position: relative;
+    padding-left: 16px;
+}
+
+.li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 4px;
+    height: 4px;
+    background-color: #1E1E1E;
+    border-radius: 50%;
+}
+
+
+.item1,
+.item3 {
+    position: relative;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(25px);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.item1::before,
+.item3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 2px;
+    z-index: -1;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0) border-box;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0) border-box;
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.item1::before {
+    background: linear-gradient(60deg, rgba(30, 30, 30, 0) 5%, rgba(30, 30, 30, 1) 100%);
+}
+
+.item3::before {
+    background: linear-gradient(-60deg, rgba(30, 30, 30, 0) 5%, rgba(30, 30, 30, 1) 100%);
+}
+
+.item2 {
+    background: linear-gradient(201deg, #1E1E1E 0%, #383939 100%);
+}
+
+.item2 .h3,
+.item2 .h4 {
+    color: #fff;
+}
+
+.item2 .label {
+    background-color: #7BF2DA;
+}
+
+.item2 .li {
+    color: rgba(255, 255, 255, .7);
+}
+
+.item2 .li::before {
+    background-color: rgba(255, 255, 255, .7);
+}
+
+@media(max-width:1360px) {
+    .h3 {
+        font-size: 28px;
+    }
+
+    .label {
+        font-size: 18px;
+    }
+
+    .item {
+        padding: 48px 24px;
+    }
+}
+
+@media(max-width:1023px) {
+    .body {
+        flex-direction: column;
+    }
+
+    .h3 {
+        font-size: 24px;
+    }
+
+    .h4 {
+        margin-top: 24px;
+    }
+}
+
+@media(max-width:767px) {
+    .section {
+        padding-top: 40px;
+    }
+}
