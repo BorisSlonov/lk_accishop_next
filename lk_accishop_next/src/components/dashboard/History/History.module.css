@@ -1,0 +1,84 @@
+.history {
+    height: 100%;
+    background: var(--BG-2, linear-gradient(358deg, #151430 1.41%, #383753 97.58%));
+    padding: 18px 24px;
+    border-radius: 10px;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.h3 {
+    font-weight: bold;
+    font-size: 20px;
+    background: var(--Titles, linear-gradient(94deg, #FB37FF 0%, #00EFD1 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.list {
+    margin-top: 16px;
+    display: grid;
+    gap: 8px;
+    max-height: 135px;
+    overflow-y: auto;
+    padding-right: 12px;
+    color: #00a8a8;
+}
+
+.list::-webkit-scrollbar {
+    width: 5px;
+    /* Ширина полосы прокрутки */
+}
+
+.list::-webkit-scrollbar-track {
+    background-color: #5c5d7483;
+    /* Цвет фона трека */
+}
+
+.list::-webkit-scrollbar-thumb {
+    background-color: #00EFD1;
+    /* Цвет ползунка */
+    border-radius: 10px;
+    /* Скругление углов ползунка */
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Цвет ползунка при наведении */
+}
+
+
+
+.list_item {
+    display: flex;
+    align-items: center;
+
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.link {
+    color: #00efcfbd;
+    font-size: 14px;
+}
+
+.dev {
+    width: 1px;
+    height: 10px;
+    background-color: #00efcf6e;
+}
+
+.product_name {
+    font-size: 14px;
+    color: #00A8A8;
+}

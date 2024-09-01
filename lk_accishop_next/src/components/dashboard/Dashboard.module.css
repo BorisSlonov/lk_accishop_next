@@ -1,0 +1,71 @@
+/* Dashboard.module.css */
+.dashboardGrid {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas:
+        "avatar head head"
+        "ref history info"
+        "rank rank rank";
+    gap: 16px;
+    margin-top: 50px;
+}
+
+.dashboardAvatar {
+    grid-area: avatar;
+    display: flex;
+    align-items: center;
+}
+
+.dashboardRef {
+    grid-area: ref;
+}
+
+.dashboardHistory {
+    grid-area: history;
+}
+
+.dashboardInfo {
+    grid-area: info;
+}
+
+.dashboardHead {
+    grid-area: head;
+}
+
+.dashboardRank {
+    grid-area: rank;
+}
+
+@media(max-width:767px) {
+    .dashboardGrid {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 50px;
+    }
+
+
+    .dashboardHead {
+        order: 1;
+    }
+
+    .dashboardHistory {
+        order: 2;
+    }
+
+    .dashboardRef {
+        order: 3;
+    }
+
+    .dashboardInfo {
+        order: 4;
+    }
+
+
+    .dashboardRank {
+        order: 5;
+    }
+
+    .dashboardAvatar {
+        order: 6;
+    }
+}
